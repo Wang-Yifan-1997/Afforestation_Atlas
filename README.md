@@ -1,6 +1,6 @@
 # 🌳 Afforestation Atlas
 
-A large-scale empirical project studying the causal effects of afforestation and reforestation programs across sub-Saharan Africa, combining satellite remote sensing, causal inference methods, and policy analysis.
+A large-scale empirical project studying the causal effects of afforestation and reforestation programs across sub-Saharan Africa (and the whole world), combining satellite remote sensing, causal inference methods, and policy analysis.
 
 ---
 
@@ -18,13 +18,7 @@ A large-scale empirical project studying the causal effects of afforestation and
 
 ---
 
-## Project Overview
-
-This project builds an "Afforestation Atlas" for sub-Saharan Africa by assembling and harmonizing data on tree-planting programs, satellite-derived environmental outcomes, household welfare, and forest governance policy. The core empirical question is: **what are the causal effects of afforestation projects on environmental outcomes, local economic welfare, and structural transformation?**
-
-**Countries covered:** Gabon, Congo Rep., Lesotho, Angola, Namibia, Mauritania, Cameroon, Guinea, Côte d'Ivoire, Burkina Faso, Mali, Chad, Gambia, Central African Republic, Burundi *(and expanding)*
-
-**Methods:** Difference-in-differences (DiD), Synthetic Difference-in-Differences (SDID), Synthetic Control, event study designs.
+## Tasks To Do
 
 ---
 
@@ -57,7 +51,7 @@ This project builds an "Afforestation Atlas" for sub-Saharan Africa by assemblin
 - [ ] Extract road density (OSM or GRIP dataset) within treated/control polygon buffers — pre-treatment baseline and changes over time
 - [ ] Extract building footprint data (Google Open Buildings or Microsoft GlobalML) to detect construction activity pre/post project
 - [ ] Test whether pre-treatment road/building presence predicts project placement (selection into treatment)
-- [ ] Test whether new roads or buildings appear *after* afforestation, as a proxy for induced economic activity
+- [ ] Test whether new roads or buildings appear *after* afforestation, as a proxy for induced economic activity, which might lead to further deforestation.
 
 ### 1.6 Satellite Data Reference Table
 
@@ -124,7 +118,7 @@ This project builds an "Afforestation Atlas" for sub-Saharan Africa by assemblin
 - [ ] Document potential welfare costs: land restrictions on smallholders, displacement of pastoralists, opportunity cost of land
 
 ### 3.3 LLM-Based Policy Coding
-- [ ] Following NBER pipeline papers (e.g., Ash et al.; Colmer et al.), use LLM to code policy documents at scale
+- [ ] Following NBER pipeline papers, use LLM to code policy documents at scale
 - [ ] Extract: enactment year, policy instrument type, target species/region, enforcement agency, stated penalty, link to international frameworks (CBD, UNFCCC NDCs)
 - [ ] Build a country-year policy stringency index as a covariate in the main empirical model
 
@@ -172,12 +166,12 @@ This project builds an "Afforestation Atlas" for sub-Saharan Africa by assemblin
 - [ ] Synthetic control (`method(sc)`) for individual treated projects as robustness
 
 ### 5.2 Treatment Definition
-- [ ] Define treatment timing precisely: planting year, or year the project enters a registry?
+- [ ] Define treatment timing precisely: planting year, or year the project enters a registry when planting year not available
 - [ ] Distinguish between *project announcement* and *implementation* — staggered adoption design if timing varies
 - [ ] Assess extent of treatment effect heterogeneity by project age (effects may take 5–10 years to appear in canopy data)
 
 ### 5.3 Control Group Construction
-- [ ] Document control polygon generation: random placement, exclusion of existing forest, matching on soil, elevation, rainfall
+- [ ] Document control polygon generation: random placement, matching on soil, elevation, rainfall
 - [ ] Consider **matching on pre-treatment NDVI trend** (propensity score or Mahalanobis) to improve balance
 - [ ] Consider using **pixels** rather than polygons as the unit of analysis for higher statistical power (following Burgess et al. 2019 on deforestation)
 
@@ -191,12 +185,10 @@ This project builds an "Afforestation Atlas" for sub-Saharan Africa by assemblin
 
 ## 6. Welfare & Structural Analysis
 
-*Inspired by frontier papers in environmental and development economics (e.g., Burgess et al. 2019; Duflo et al. 2008; Jayachandran et al. 2017; Jack & Jayachandran 2024; Balboni et al. 2023)*
-
 ### 6.1 Local Labor Market Effects
 - [ ] Test whether afforestation projects shift local employment from agriculture toward forestry/services (structural transformation channel)
 - [ ] Use DHS employment variables and NTL as proxies; ideally link to country-level labor surveys if available
-- [ ] Heterogeneity: effects likely larger in land-abundant, low-density areas (e.g., Gabon, Namibia) vs. high land-pressure areas (Burundi, Gambia)
+- [ ] Heterogeneity: effects maybe different in land-abundant, low-density areas (e.g., Gabon, Namibia) vs. high land-pressure areas (Burundi, Gambia)
 
 ### 6.2 Land Use Spillovers & Leakage
 - [ ] Test for "leakage": does afforestation in one area displace agricultural deforestation to adjacent areas?
@@ -222,7 +214,7 @@ This project builds an "Afforestation Atlas" for sub-Saharan Africa by assemblin
 
 ## 7. Robustness & Validation
 
-- [ ] Placebo tests: assign fake treatment timing; confirm null effects
+- [ ] Placebo tests: assign fake treatment timing; confirm null effects (for example, the countries without afforestation projects)
 - [ ] Restrict to projects with stricter geolocation confidence; re-run main estimates
 - [ ] Use raw (pre-deduplication) project data as alternative sample
 - [ ] Alternative NDVI sources (Landsat, Sentinel-2) as outcome variable substitutes
