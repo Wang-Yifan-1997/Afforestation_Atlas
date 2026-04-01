@@ -3,7 +3,7 @@
 ---
 
 ## Title Candidates
-**The Global Afforestation Atlas**
+
 ---
 
 ## Abstract *(~200 words)*
