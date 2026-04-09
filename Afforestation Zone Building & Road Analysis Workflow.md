@@ -1,4 +1,4 @@
-# Afforestation Zone Building \&amp; Road Analysis Workflow
+# Afforestation Zone Building \& Road Analysis Workflow
 
 **Test Case: Ethiopia**
 This repository contains a complete workflow for calculating building and road statistics within afforestation polygons, optimized for memory efficiency and scalability\.
