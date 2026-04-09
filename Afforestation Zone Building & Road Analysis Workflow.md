@@ -706,10 +706,3 @@ python google_buildings_batch.py
 
 - **Recommended Uploads**: Include all code files, small CSV summaries, and visualization images\. Raw data files are not recommended for GitHub upload\.
 
----
-
-## License
-
-This project is licensed under the MIT License\.
-
-> （注：文档部分内容可能由 AI 生成）
