@@ -1,0 +1,38 @@
+# ── Python virtual environment ─────────────────────────────────────────────
+.venv/
+**/.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# ── Secrets / credentials — DO NOT COMMIT ──────────────────────────────────
+**/password.txt
+*.pem
+*.key
+*service_account*.json
+*credentials*.json
+*.env
+
+# ── Claude / editor local settings ─────────────────────────────────────────
+**/.claude/settings.local.json
+
+# ── R ──────────────────────────────────────────────────────────────────────
+.Rhistory
+**/.Rhistory
+.RData
+.Rproj.user/
+
+# ── Stata autosave / swap / temp ───────────────────────────────────────────
+*.stswp
+~*.do*
+*.tmp.*
+*.do.tmp.*
+
+# ── Stray outputs ──────────────────────────────────────────────────────────
+Rplots.pdf
+
+# ── OS / Dropbox cruft ─────────────────────────────────────────────────────
+desktop.ini
+**/desktop.ini
+.DS_Store
+Thumbs.db

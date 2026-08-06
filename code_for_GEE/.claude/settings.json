@@ -1,0 +1,45 @@
+{
+  "dangerouslySkipPermissions": true,
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-ChildItem -Path ''C:\\\\Users\\\\WANGY390\\\\Dropbox\\\\phd general\\\\innovation_and_fossil\\\\'' | Select-Object FullName, PSIsContainer, LastWriteTime\")",
+      "Read(//c/Users/WANGY390/Dropbox/phd general/innovation_and_fossil/**)",
+      "Bash(powershell -Command \"Test-Path ''C:\\\\Users\\\\WANGY390\\\\Dropbox\\\\phd general\\\\innovation_and_fossil\\\\output\\\\innovation_fossil_fuel''\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path ''C:\\\\Users\\\\WANGY390\\\\Dropbox\\\\phd general\\\\innovation_and_fossil\\\\output'' -Recurse | Select-Object FullName, PSIsContainer\")",
+      "Bash(powershell -Command \"Get-Content -Path ''C:\\\\Users\\\\WANGY390\\\\Dropbox\\\\phd general\\\\innovation_and_fossil\\\\innovation_robustness.do'' -Raw\")",
+      "Bash(powershell -Command \"Get-Content -Path ''C:\\\\Users\\\\WANGY390\\\\Dropbox\\\\phd general\\\\innovation_and_fossil\\\\CLAUDE.md'' -Raw\")",
+      "Read(//c/Users/WANGY390/Downloads/00mgmt/**)",
+      "Read(//c/Users/WANGY390/Downloads/hyx-file-structure/**)",
+      "Read(//c/Users/WANGY390/Downloads/hyx-md-template/**)",
+      "Read(//c/Users/WANGY390/Dropbox/China Dams/new_code/**)",
+      "Read(//c/Users/WANGY390/Dropbox/China Dams/**)",
+      "Read(//mnt/c/Users/WANGY390/Dropbox/**)",
+      "Bash(cmd /c dir \"C:\\\\Users\\\\WANGY390\\\\Dropbox\\\\China Dams\" \")",
+      "Read(//c/Users/WANGY390/Dropbox/China/ Dams/code/**)",
+      "Read(//c/Users/WANGY390/Dropbox/China/ Dams/code/analysis/**)",
+      "Read(//c/Users/WANGY390/Dropbox/China/ Dams/code/cleaning/yifan/**)",
+      "Read(//c/Users/WANGY390/Dropbox/**)",
+      "Bash(python -c \":*)",
+      "Bash(py -3 -c \":*)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Read(//c/Users/WANGY390/Downloads/data_to_check/**)",
+      "Bash(python3 -c \"import pandas as pd; xl = pd.ExcelFile\\(''C:/Users/WANGY390/Downloads/data_to_check/2006年县级数据整理_v2.xlsx''\\); print\\(''Sheets:'', xl.sheet_names\\)\")",
+      "Bash(where python3:*)",
+      "Bash(where python:*)",
+      "Bash(where py:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\WANGY390\\Dropbox\\phd general\\poverty in space\\scripts\\matlab",
+      "C:\\Users\\WANGY390\\Dropbox\\phd general\\innovation_and_fossil",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\00mgmt\\tasks",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\00mgmt",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\01code",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\02results",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\03keyresults",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\04discussions",
+      "C:\\Users\\WANGY390\\Dropbox\\China Dams\\new_code\\05data",
+      "C:\\Users\\WANGY390\\.claude"
+    ]
+  }
+}

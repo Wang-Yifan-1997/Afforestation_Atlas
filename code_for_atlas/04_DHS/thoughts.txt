@@ -1,0 +1,7 @@
+the current version of 01_economic_outcomes are purely correlation.
+we see clusters closer to the reforestation projects are richer, have lower cows etc.
+however, it might be that reforestation projects are put in the places where there are richer and have lower cows. 
+
+what do we need to do. we calculate the distance of the projects to all the reforestation projects in 2024;
+then this distance is always fixed. the treatment from reforestation will be staggered, and we reply on the random 
+allocation of the timing

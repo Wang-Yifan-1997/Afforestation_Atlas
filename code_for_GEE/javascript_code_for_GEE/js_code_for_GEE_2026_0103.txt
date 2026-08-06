@@ -1,0 +1,62 @@
+// -------------------------
+// 1. Define Ghana geometry
+// -------------------------
+var countries = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017');
+
+var ghana = countries
+  .filter(ee.Filter.eq('country_na', 'Ghana'))
+  .geometry();
+
+// -------------------------
+// 2. Load Annual NDVI composite (2017)
+// -------------------------
+var dataset = ee.ImageCollection('LANDSAT/COMPOSITES/C02/T1_L2_ANNUAL_NDVI')
+  .filterDate('2017-01-01', '2017-12-31');
+
+var ndvi2017 = dataset.mosaic().select('NDVI').clip(ghana);
+
+// -------------------------
+// 3. Visualise over Ghana
+// -------------------------
+var colorizedVis = {
+  min: 0,
+  max: 1,
+  palette: [
+    'ffffff', 'ce7e45', 'df923d', 'f1b555', 'fcd163', '99b718', '74a901',
+    '66a000', '529400', '3e8600', '3e8601', '207401', '056201', '004c00',
+    '023b01', '012e01', '011d01', '011301'
+  ],
+};
+
+Map.centerObject(ghana, 7);   // zoom to Ghana
+Map.addLayer(ndvi2017, colorizedVis, 'Annual NDVI 2017 - Ghana');
+
+// -------------------------
+// 4. Export to Google Drive
+// -------------------------
+// -------------------------
+// Export annual NDVI for Ghana, 2000–2024
+// -------------------------
+
+var years = ee.List.sequence(2000, 2024);
+
+years.getInfo().forEach(function(y) {
+  var year = y;  // plain JS number
+
+  // Filter the annual NDVI composite for that year
+  var dataset = ee.ImageCollection('LANDSAT/COMPOSITES/C02/T1_L2_ANNUAL_NDVI')
+    .filterDate(year + '-01-01', year + '-12-31');
+
+  var ndviYear = dataset.mosaic().select('NDVI').clip(ghana);
+
+  // Create an export task for this year
+  Export.image.toDrive({
+    image: ndviYear,
+    description: 'Landsat_Annual_NDVI_Ghana_' + year,
+    folder: 'NDVI',                 // your Drive folder
+    fileNamePrefix: 'ndvi_ghana_' + year,
+    region: ghana,
+    scale: 30,
+    maxPixels: 1e13
+  });
+});

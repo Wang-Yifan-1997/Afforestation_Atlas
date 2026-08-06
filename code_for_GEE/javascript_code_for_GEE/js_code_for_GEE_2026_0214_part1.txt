@@ -1,0 +1,85 @@
+// -------------------------
+// Export Annual NDVI for ONE Country at a Time (2000-2024)
+// Resolution: 120m (4x native 30m - clean aggregation)
+// WITH PREVIEW VISUALIZATION
+// Saves to: NDVI_Africa/[CountryName]/
+// -------------------------
+
+// **CHANGE THIS TO THE COUNTRY YOU WANT TO EXPORT**
+var selectedCountry = 'Ghana';  // <-- CHANGE THIS LINE EACH TIME
+
+// -------------------------
+var countries = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017');
+var years = ee.List.sequence(2000, 2024);
+
+// Get the country geometry
+var country = countries
+  .filter(ee.Filter.eq('country_na', selectedCountry))
+  .geometry();
+
+// Clean country name for file naming
+var countryCode = selectedCountry.replace(/\s+/g, '_')
+                                 .replace(/'/g, '')
+                                 .replace(/\./g, '');
+
+// -------------------------
+// VISUALIZATION: Show country boundary and sample NDVI years
+// -------------------------
+
+// Center map on selected country
+Map.centerObject(country, 6);
+
+// Add country boundary
+Map.addLayer(country, {color: 'red'}, selectedCountry + ' Boundary', true, 0.5);
+
+// Visualization parameters for NDVI
+var ndviVis = {
+  min: 0,
+  max: 1,
+  palette: [
+    'ffffff', 'ce7e45', 'df923d', 'f1b555', 'fcd163', '99b718', '74a901',
+    '66a000', '529400', '3e8600', '3e8601', '207401', '056201', '004c00',
+    '023b01', '012e01', '011d01', '011301'
+  ]
+};
+
+// Show NDVI for a few sample years to verify
+var previewYears = [2000, 2010, 2020, 2024];
+
+previewYears.forEach(function(year) {
+  var dataset = ee.ImageCollection('LANDSAT/COMPOSITES/C02/T1_L2_ANNUAL_NDVI')
+    .filterDate(year + '-01-01', year + '-12-31');
+  
+  var ndviPreview = dataset.mosaic().select('NDVI').clip(country);
+  
+  // Add to map (turned off by default except most recent)
+  var showLayer = (year === 2024);
+  Map.addLayer(ndviPreview, ndviVis, 
+               selectedCountry + ' NDVI ' + year, 
+               showLayer);
+});
+
+// -------------------------
+// EXPORT ALL YEARS
+// -------------------------
+
+years.getInfo().forEach(function(y) {
+  var year = y;
+  
+  var dataset = ee.ImageCollection('LANDSAT/COMPOSITES/C02/T1_L2_ANNUAL_NDVI')
+    .filterDate(year + '-01-01', year + '-12-31');
+  
+  var ndviYear = dataset.mosaic().select('NDVI').clip(country);
+  
+  Export.image.toDrive({
+    image: ndviYear,
+    description: 'NDVI_' + countryCode + '_' + year,
+    folder: 'NDVI_Africa/' + countryCode,  // <-- COUNTRY SUBFOLDER
+    fileNamePrefix: 'ndvi_' + countryCode + '_' + year,
+    region: country,
+    scale: 120,
+    maxPixels: 1e13,
+    crs: 'EPSG:4326',
+    fileFormat: 'GeoTIFF'
+  });
+});
